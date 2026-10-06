@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="uk">
+<html lang="uk" data-panels="k">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -998,9 +998,6 @@
       linear-gradient(90deg, rgba(215,228,255,.5) 1px, transparent 1px) 0 0/16.666% 100%,
       linear-gradient(165deg, #3a62c9 0%, #1d3f9c 55%, #0f2670 100%);
   }
-  .pv-sw{ position:fixed; left:50%; bottom:14px; transform:translateX(-50%); z-index:9999; display:flex; gap:6px; padding:6px; border-radius:999px; background:rgba(12,12,20,.85); border:1px solid rgba(240,200,121,.4); backdrop-filter:blur(8px); }
-  .pv-sw button{ font:600 12px 'JetBrains Mono',monospace; color:#e8dcc4; background:transparent; border:0; border-radius:999px; padding:8px 13px; cursor:pointer; }
-  .pv-sw button.on{ background:linear-gradient(120deg,#f5921f,#f0c879); color:#1a1206; }
 
   /* light theme: brighter panels */
   html[data-theme="light"][data-panels]{
@@ -1015,6 +1012,8 @@
   html[data-theme="light"][data-panels] .cell{ box-shadow:0 1px 0 rgba(255,255,255,.5) inset, 0 0 0 .5px rgba(40,70,140,.35); }
   html[data-theme="light"][data-panels="k"] .array2::after{ background:linear-gradient(rgba(225,235,255,.22),rgba(225,235,255,.22)), linear-gradient(118deg, rgba(139,92,246,.22) 0%, rgba(139,92,246,0) 40%, rgba(245,146,31,0) 58%, rgba(245,146,31,.2) 100%); }
   html[data-theme="light"][data-panels="k"] .array3::after{ background:linear-gradient(rgba(225,235,255,.4),rgba(225,235,255,.4)), linear-gradient(118deg, rgba(139,92,246,.22) 0%, rgba(139,92,246,0) 40%, rgba(245,146,31,0) 58%, rgba(245,146,31,.2) 100%); }
+  /* smoothness: cells are coplanar, so no per-cell 3D layers needed */
+  html[data-panels] .array, html[data-panels] .array2, html[data-panels] .array3{ transform-style:flat; }
   /* ===== CINEMATIC (k) ===== */
   .cine-flare, .cine-haze, .cine-vig{ display:none; }
   html[data-panels="k"] .cine-haze, html[data-panels="k"] .cine-vig{ display:block; }
@@ -1791,14 +1790,6 @@
   }
 })();
 </script>
-<div class="pv-sw" id="pvSw"><button data-v="">Було</button><button data-v="a">A</button><button data-v="k">Кіно</button></div>
-<script>
-(function(){const sw=document.getElementById('pvSw'),r=document.documentElement;
-function set(v){v?r.setAttribute('data-panels',v):r.removeAttribute('data-panels');[...sw.children].forEach(b=>b.classList.toggle('on',b.dataset.v===v));}
-sw.addEventListener('click',e=>{const b=e.target.closest('button');if(b)set(b.dataset.v);});
-set((location.hash.match(/p=(\w)/)||[])[1]||'k');
-})();
-</script>
 <script>
 (function(){
   const root=document.documentElement, viz=document.querySelector('.viz'); if(!viz) return;
@@ -1814,6 +1805,7 @@ set((location.hash.match(/p=(\w)/)||[])[1]||'k');
     }));
   }
   setTimeout(wave,3500); setInterval(wave,7500);
+  setTimeout(()=>document.querySelectorAll('.cell').forEach(c=>{c.style.opacity='1';c.style.animation='none';}),5500);
   /* parallax (direct style writes, rAF-throttled) */
   const L=[['.array-wrap',1],['.array-wrap2',.6],['.array-wrap3',.3],['.sun-scale',1.7]].map(([q,k])=>[document.querySelector(q),k]).filter(x=>x[0]);
   let tx=0,ty=0,cx=0,cy=0,sy=0,run=false;
