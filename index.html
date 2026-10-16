@@ -327,7 +327,11 @@
   html[data-theme="light"] .fcta-gold{ background:linear-gradient(110deg,#7a4bd8,#c9831a 60%,#e8641a); -webkit-background-clip:text; background-clip:text; }
   .fcta-tag{ font:600 10px 'IBM Plex Mono',monospace; letter-spacing:.2em; text-transform:uppercase; color:#f0c879; display:block; margin-bottom:10px; }
   html[data-theme="light"] .fcta-tag{ color:#7a4bd8; }
-  .fcta-n{ position:absolute; left:50%; top:-1px; transform:translate(-50%,-50%); width:58px; height:58px; border-radius:17px; display:grid; place-items:center; font:700 22px var(--f-head); color:#2a1608; background:linear-gradient(135deg,#ffdb8a,#f5921f); box-shadow:0 0 0 8px rgba(245,146,31,.12),0 14px 30px -8px rgba(245,146,31,.7); }
+  .fcta-n{ position:absolute; left:50%; top:-1px; transform:translate(-50%,-50%); width:76px; height:76px; border-radius:50%; display:grid; place-items:center; border:1px solid transparent; background:linear-gradient(#17122e,#17122e) padding-box,linear-gradient(135deg,#8b5cf6,#f0c879,#ff9a3c) border-box; box-shadow:0 12px 30px -10px rgba(245,146,31,.55); }
+  .fcta-n::before{ content:''; position:absolute; inset:-9px; border-radius:50%; border:1px dashed rgba(240,200,121,.4); }
+  .fcta-n b{ font:300 38px/1 var(--f-head); font-weight:300; background:linear-gradient(160deg,#c9b2ff,#f0c879 50%,#ff9a3c); -webkit-background-clip:text; background-clip:text; color:transparent; -webkit-text-fill-color:transparent; }
+  html[data-theme="light"] .fcta-n{ background:linear-gradient(#fff,#f3ecff) padding-box,linear-gradient(135deg,#a98bff,#e0a43a,#ff9a3c) border-box; }
+  html[data-theme="light"] .fcta-n b{ background:linear-gradient(160deg,#7a4bd8,#c9831a 55%,#e8641a); -webkit-background-clip:text; background-clip:text; }
 
   /* ---------- MINI CTA (line + button) ---------- */
   .mcta{ margin-top:48px; text-align:center; }
@@ -1767,7 +1771,7 @@
       <div class="step" data-step><div class="step-num">7</div><div class="step-card tilt"><h3>Запуск та інструктаж</h3><p>Тестуємо станцію під навантаженням і показуємо, як нею користуватись і стежити за роботою.</p></div></div>
     </div>
     <div class="fcta reveal">
-      <span class="fcta-n">8</span>
+      <span class="fcta-n"><b>8</b></span>
       <span class="fcta-tag">Крок 8 · Старт робіт</span>
       <h3>Готові <span class="fcta-gold">почати?</span></h3>
       <p>Виїзд майстра, розрахунок і консультація — безкоштовно. Домовимось про зручний для вас час.</p>
