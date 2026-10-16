@@ -365,6 +365,21 @@
     box-shadow:inset 0 0 22px rgba(60,150,230,.16),0 16px 32px -16px rgba(120,80,220,.45); }
   html[data-theme="light"] .lcdcta-scr::after{ background:repeating-linear-gradient(180deg,rgba(30,110,200,.05) 0 1px,transparent 1px 3px); }
   html[data-theme="light"] .lcdcta-scr div span:first-child{ opacity:.6; }
+  /* contact call pill */
+  .pc{position:relative;overflow:hidden;display:inline-flex;align-items:center;gap:14px;padding:12px 32px 12px 14px;border-radius:99px;color:#fff;text-decoration:none;background:linear-gradient(135deg,#7c4dff,#b44be0 50%,#ff7a3c);box-shadow:0 16px 34px -14px rgba(180,75,224,.65);font-family:var(--f-body)}
+  .pc::after{content:'';position:absolute;top:0;left:0;width:22%;height:100%;background:linear-gradient(120deg,transparent,rgba(255,255,255,.4),transparent);filter:blur(4px);transform:translateX(-120%) skewX(-18deg);animation:btnSheen 5.5s ease-in-out infinite;pointer-events:none}
+  .pc .l{display:flex;flex-direction:column;align-items:flex-start;text-align:left;line-height:1.2;font:600 16.5px var(--f-body)}
+  .pc .l small{font:500 12.5px var(--f-mono);letter-spacing:.06em;opacity:.9;margin-top:3px}
+  .pc .ic{position:relative;flex:none;width:46px;height:46px;display:grid;place-items:center}
+  .pc .ic svg{position:relative;width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+  .pc .ic{border-radius:50%;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.45)}
+  .pc .ic::before,.pc .ic::after{content:'';position:absolute;inset:0;border-radius:50%;border:1.5px solid rgba(255,255,255,.7);animation:pcwv 2.4s ease-out infinite}
+  .pc .ic::after{animation-delay:1.2s}
+  @keyframes pcwv{0%{transform:scale(1);opacity:.8}100%{transform:scale(1.65);opacity:0}}
+  .pc .ic svg{animation:pcrg 2.6s ease-in-out infinite}
+  @keyframes pcrg{0%,55%,100%{transform:rotate(0)}6%{transform:rotate(-16deg)}12%{transform:rotate(14deg)}18%{transform:rotate(-12deg)}24%{transform:rotate(10deg)}30%{transform:rotate(0)}}
+  .pc .ic svg{animation:pcrg 2.6s ease-in-out infinite}
+  
   .call-wrap{ margin-top:16px; } .call-wrap.c{ display:flex; justify-content:center; }
   .btn-primary:hover{ box-shadow:0 24px 54px -14px rgba(139,92,246,.65), 0 10px 26px -10px rgba(245,146,31,.5); transform:translateY(-2px); }
   .btn-primary .bolt path{ fill:#1a0a2e; }
@@ -2007,7 +2022,7 @@
       <h2>Слідкуйте за монтажами й пишіть нам напряму</h2>
       <p>Показуємо реальні об'єкти від виїзду майстра до запуску станції.</p>
     </div>
-    <div class="call-wrap c" style="margin-top:36px"><a class="call-btn" href="tel:+380636213843"><span class="ic"><svg viewBox="0 0 24 24" width="18" height="18"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg></span><span class="t">Зателефонувати зараз<small>063 621 38 43</small></span></a></div>
+    <div class="call-wrap c" style="margin-top:36px"><a class="pc" href="tel:+380636213843"><span class="ic"><svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg></span><span class="l">Зателефонувати зараз<small>063 621 38 43</small></span></a></div>
     <div class="social-row reveal">
       <a class="bolt-btn ig magnetic" href="https://instagram.com/easy_sun.od" target="_blank" rel="noopener">
         <span class="bolt-stack"><svg viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z"/></svg></span>
