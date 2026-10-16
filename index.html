@@ -328,6 +328,39 @@
   .fcta-tag{ font:600 10px 'IBM Plex Mono',monospace; letter-spacing:.2em; text-transform:uppercase; color:#f0c879; display:block; margin-bottom:10px; }
   html[data-theme="light"] .fcta-tag{ color:#7a4bd8; }
   .fcta-n{ position:absolute; left:50%; top:-1px; transform:translate(-50%,-50%); width:58px; height:58px; border-radius:17px; display:grid; place-items:center; font:700 22px var(--f-head); color:#2a1608; background:linear-gradient(135deg,#ffdb8a,#f5921f); box-shadow:0 0 0 8px rgba(245,146,31,.12),0 14px 30px -8px rgba(245,146,31,.7); }
+
+  /* ---------- MINI CTA (line + button) ---------- */
+  .mcta{ margin-top:48px; text-align:center; }
+  .mcta-ln{ display:flex; align-items:center; gap:12px; margin-bottom:16px; }
+  .mcta-ln i{ flex:1; height:1px; background:linear-gradient(90deg,transparent,rgba(180,150,255,.7),rgba(240,200,121,.9)); }
+  .mcta-ln i:last-child{ background:linear-gradient(270deg,transparent,rgba(180,150,255,.7),rgba(240,200,121,.9)); }
+  .mcta-ln svg{ width:18px; height:18px; fill:#f0c879; filter:drop-shadow(0 0 6px rgba(240,200,121,.7)); }
+  html[data-theme="light"] .mcta-ln svg{ fill:#e0a43a; }
+  .mcta-q{ font:700 clamp(17px,4.6vw,21px)/1.25 var(--f-head); color:var(--hi); margin-bottom:16px; }
+  .mcta-q span{ background:linear-gradient(110deg,#c9b2ff,#f0c879 55%,#ff9a3c); -webkit-background-clip:text; background-clip:text; color:transparent; -webkit-text-fill-color:transparent; }
+  html[data-theme="light"] .mcta-q span{ background:linear-gradient(110deg,#7a4bd8,#c9831a 60%,#e8641a); -webkit-background-clip:text; background-clip:text; }
+  .mcta-go{ position:relative; overflow:hidden; display:inline-flex; align-items:center; gap:8px; text-decoration:none; white-space:nowrap; border-radius:99px; padding:12px 22px; font:700 14.5px 'Philosopher',serif; color:#2a1608; border:1px solid rgba(255,255,255,.35);
+    background:linear-gradient(100deg,#c9b2ff,#f0c879 38%,#f5921f 70%,#a98bff); box-shadow:0 12px 26px -12px rgba(245,146,31,.6); transition:transform .35s var(--ease2); }
+  .mcta-go:hover{ transform:translateY(-2px); }
+  .mcta-go::after{ content:''; position:absolute; top:0; left:0; width:22%; height:100%; background:linear-gradient(120deg,transparent,rgba(255,255,255,.45),transparent); filter:blur(4px); transform:translateX(-120%) skewX(-18deg); animation:btnSheen 5.5s ease-in-out infinite; pointer-events:none; }
+  .mcta-go svg{ width:14px; height:14px; fill:none; stroke:currentColor; stroke-width:2.2; stroke-linecap:round; stroke-linejoin:round; flex:none; }
+
+  /* ---------- LCD CTA (after Deye) ---------- */
+  .lcdcta{ margin-top:48px; text-align:center; }
+  .lcdcta-scr{ position:relative; max-width:360px; margin:0 auto 20px; border-radius:18px; padding:16px 18px; text-align:left; overflow:hidden;
+    font:500 13px 'IBM Plex Mono',monospace; letter-spacing:.06em; border:1px solid transparent;
+    background:linear-gradient(180deg,#0b1a12,#07110b) padding-box,linear-gradient(120deg,#8b5cf6,#c9b2ff 50%,#f0c879) border-box;
+    box-shadow:inset 0 0 26px rgba(40,255,120,.12),0 18px 36px -18px rgba(139,92,246,.6); color:#6dffa8; }
+  .lcdcta-scr::after{ content:''; position:absolute; inset:0; pointer-events:none; background:repeating-linear-gradient(180deg,rgba(255,255,255,.035) 0 1px,transparent 1px 3px); }
+  .lcdcta-scr div{ display:flex; justify-content:space-between; gap:12px; padding:4px 0; }
+  .lcdcta-scr div span:first-child{ opacity:.55; }
+  .lcdcta-cur::after{ content:'_'; animation:lcdBlink 1s steps(1) infinite; }
+  @keyframes lcdBlink{ 50%{ opacity:0; } }
+  html[data-theme="light"] .lcdcta-scr{ color:#1b78d0;
+    background:linear-gradient(180deg,#f2f9ff,#dbeafb) padding-box,linear-gradient(120deg,#a98bff,#e0a43a 55%,#ff9a3c) border-box;
+    box-shadow:inset 0 0 22px rgba(60,150,230,.16),0 16px 32px -16px rgba(120,80,220,.45); }
+  html[data-theme="light"] .lcdcta-scr::after{ background:repeating-linear-gradient(180deg,rgba(30,110,200,.05) 0 1px,transparent 1px 3px); }
+  html[data-theme="light"] .lcdcta-scr div span:first-child{ opacity:.6; }
   .call-wrap{ margin-top:16px; } .call-wrap.c{ display:flex; justify-content:center; }
   .btn-primary:hover{ box-shadow:0 24px 54px -14px rgba(139,92,246,.65), 0 10px 26px -10px rgba(245,146,31,.5); transform:translateY(-2px); }
   .btn-primary .bolt path{ fill:#1a0a2e; }
@@ -1704,6 +1737,11 @@
       <div class="spec-row"><div class="spec-num">05</div><div class="spec-title">Під ключ</div><div class="spec-desc">Розрахунок, документи, обладнання, монтаж і запуск — усе виконує одна команда, без посередників.</div></div>
       </div>
     </div>
+    <div class="mcta reveal">
+      <div class="mcta-ln"><i></i><svg viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z"/></svg><i></i></div>
+      <div class="mcta-q">Скільки заощадите <span>саме ви?</span></div>
+      <a class="mcta-go" href="#consult"><span>Розрахувати економію</span><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
   </div>
 </section>
 
@@ -1732,7 +1770,7 @@
       <span class="fcta-n">8</span>
       <span class="fcta-tag">Крок 8 · Старт робіт</span>
       <h3>Готові <span class="fcta-gold">почати?</span></h3>
-      <p>Виїзд майстра, розрахунок і консультація — безкоштовно. Домовимось про зручний час.</p>
+      <p>Виїзд майстра, розрахунок і консультація — безкоштовно. Домовимось про зручний для вас час.</p>
       <div class="fcta-acts">
         <a href="#consult" class="btn btn-primary magnetic"><svg class="bolt" viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z"/></svg>Отримати розрахунок</a>
         <a class="call-btn" href="tel:+380636213843"><span class="ic"><svg viewBox="0 0 24 24" width="18" height="18"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg></span><span class="t">Зателефонувати зараз<small>063 621 38 43</small></span></a>
@@ -1771,6 +1809,15 @@
       <div class="spec-row"><div class="spec-num">02</div><div class="spec-title">Паралельна робота до 16 інверторів</div><div class="spec-desc">Систему можна нарощувати — до 16 інверторів в одній мережі, синхронно, з єдиною батареєю або окремими акумуляторами на кожному пристрої.</div></div>
       <div class="spec-row"><div class="spec-num">03</div><div class="spec-title">100% потужності на одну фазу</div><div class="spec-desc">У трифазних моделях: якщо навантажена лише одна фаза, Deye спрямовує туди всю доступну потужність — без перекосу і без відключення в захист.</div></div>
       <div class="spec-row"><div class="spec-num">04</div><div class="spec-title">Перемикання за 4–10 мс</div><div class="spec-desc">У режимі UPS перехід на живлення від акумуляторів при зникненні мережі — практично непомітний для побутової техніки.</div></div>
+    </div>
+    <div class="lcdcta reveal">
+      <div class="lcdcta-scr" aria-hidden="true">
+        <div><span>ОБ'ЄКТ</span><span>ваш дім / бізнес</span></div>
+        <div><span>ПОТУЖНІСТЬ</span><span class="lcdcta-cur">? кВт</span></div>
+        <div><span>ІНВЕРТОР</span><span>підберемо</span></div>
+      </div>
+      <div class="mcta-q">Який інвертор потрібен саме <span>вашому дому чи бізнесу?</span></div>
+      <a class="mcta-go" href="#consult"><span>Підібрати станцію</span><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
     </div>
   </div>
 </section>
